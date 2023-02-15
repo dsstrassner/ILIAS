@@ -389,13 +389,11 @@ class assFormulaQuestionGUI extends assQuestionGUI
                 $mc_result_units->setValue($selectedvalues);
 
                 $sel_result_units = new ilSelectInputGUI($this->lng->txt('result_unit'), 'unit_' . $result->getResult());
-                $sel_result_units->setOptions(array(0 => $this->lng->txt('no_selection')) + $unit_options);
+                $sel_result_units->setOptions(array(0 => $this->lng->txt('no_selection_for_units')) + $unit_options);
                 $sel_result_units->setInfo($this->lng->txt('result_unit_info'));
                 if (is_object($result->getUnit())) {
                     $sel_result_units->setValue($result->getUnit()->getId());
                 }
-
-
 
                 $result_type = new ilRadioGroupInputGUI($this->lng->txt('result_type_selection'), 'result_type_' . $result->getResult());
                 $result_type->setRequired(true);
