@@ -468,8 +468,8 @@ class assFormulaQuestionGUI extends assQuestionGUI
                 $form->addItem($suggest_range_button);
                 $form->addItem($precision);
                 $form->addItem($tolerance);
-                $form->addItem($sel_result_units);
                 $form->addItem($mc_result_units);
+                $form->addItem($sel_result_units);
                 $form->addItem($result_type);
                 $form->addItem($points);
                 $form->addItem($rating_type);
