@@ -376,13 +376,6 @@ class assFormulaQuestionGUI extends assQuestionGUI
                 $suggest_range_button = new ilCustomInputGUI('', '');
                 $suggest_range_button->setHtml('<input type="submit" class="btn btn-default" name="cmd[suggestrange_' . $result->getResult() . ']" value="' . $this->lng->txt("suggest_range") . '" />');
 
-                $sel_result_units = new ilSelectInputGUI($this->lng->txt('unit'), 'unit_' . $result->getResult());
-                $sel_result_units->setOptions(array(0 => $this->lng->txt('no_selection')) + $unit_options);
-                $sel_result_units->setInfo($this->lng->txt('result_unit_info'));
-                if (is_object($result->getUnit())) {
-                    $sel_result_units->setValue($result->getUnit()->getId());
-                }
-
                 $mc_result_units = new ilMultiSelectInputGUI($this->lng->txt('result_units'), 'units_' . $result->getResult());
                 $mc_result_units->setOptions($unit_options);
                 $mc_result_units->setInfo($this->lng->txt('result_units_info'));
@@ -393,6 +386,15 @@ class assFormulaQuestionGUI extends assQuestionGUI
                     }
                 }
                 $mc_result_units->setValue($selectedvalues);
+
+                $sel_result_units = new ilSelectInputGUI($this->lng->txt('unit'), 'unit_' . $result->getResult());
+                $sel_result_units->setOptions(array(0 => $this->lng->txt('no_selection')) + $unit_options);
+                $sel_result_units->setInfo($this->lng->txt('result_unit_info'));
+                if (is_object($result->getUnit())) {
+                    $sel_result_units->setValue($result->getUnit()->getId());
+                }
+
+
 
                 $result_type = new ilRadioGroupInputGUI($this->lng->txt('result_type_selection'), 'result_type_' . $result->getResult());
                 $result_type->setRequired(true);
