@@ -1188,7 +1188,7 @@ assessment#:#result_frac#:#Bruch
 assessment#:#result_frac_info#:#Die Eingaben 1/3 und 2/6  sind beides gültige Ergebnisse
 assessment#:#result_type_selection#:#Ergebnistypauswahl
 assessment#:#result_unit#:#Korrekte Einheit
-assessment#:#result_unit_info#:#Bitte beachten Sie, dass die hier festgelegte Einheit auch innerhalb der "Auswählbaren Einheiten" selektiert werden muss. Nur bei der Auswahl dieser Einheit, gilt die Frage als korrekt beantwortet. Andere Einheiten werden von ILIAS nicht als als korrekt angesehen, auch wenn diese aus dem selben Bereich kommen.
+assessment#:#result_unit_info#:#Bitte beachten Sie, dass die hier festgelegte Einheit auch innerhalb der "Auswählbaren Einheiten" selektiert werden muss. Nur bei der Auswahl der hier festgelegten Einheit, gilt die Fragen als korrekt beantwortet, unabhängig welche anderen Einheiten noch zur Auswahl stehen.
 assessment#:#result_units#:#Auswählbare Einheiten
 assessment#:#result_units_info#:#Die hier ausgewählten Einheiten werden dem Lernenden zur Antwort angeboten. Der Lernende muss sich hier für eine Einheit entscheiden.
 assessment#:#result_x#:#Ergebnis %s
