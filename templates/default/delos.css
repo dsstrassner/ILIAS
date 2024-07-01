@@ -17678,9 +17678,6 @@ tr.tblheader {
 .ilTableOuter .table {
   background-color: white;
 }
-.ilTableOuter .table tr th:first-child, .ilTableOuter .table tr td:first-child {
-  padding-left: 15px;
-}
 
 td > img[src$="icon_custom.svg"] {
   max-width: 32px;
