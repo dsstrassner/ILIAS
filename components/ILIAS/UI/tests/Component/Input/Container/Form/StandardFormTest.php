@@ -126,12 +126,12 @@ class StandardFormTest extends ILIAS_UI_TestBase
             ]);
 
         $r = $this->getDefaultRenderer();
-        $html = $this->getDefaultRenderer()->render($form);
+        $html = $this->brutallyTrimHTML($this->getDefaultRenderer()->render($form));
 
         $expected = $this->brutallyTrimHTML('
         <form class="c-form c-form--horizontal" enctype="multipart/form-data" action="MY_URL" method="post">
            <div class="c-form__header">
-              <div class="c-form__actions"><button class="btn btn-default" data-action="">save</button></div>
+              <div class="c-form__actions"></div>
            </div>'
            . $this->getTextFieldHtml() .
           '<div class="c-form__footer">
@@ -168,7 +168,7 @@ class StandardFormTest extends ILIAS_UI_TestBase
         $url = "MY_URL";
         $form = $f->standard($url, [
             $if->text("label", "byline"),
-        ])->withSubmitLabel('create');
+        ])->withSubmitLabel('create')->withForcedTopButton(true);
 
         $r = $this->getDefaultRenderer();
         $html = $this->brutallyTrimHTML($r->render($form));
@@ -204,7 +204,6 @@ class StandardFormTest extends ILIAS_UI_TestBase
         <form class="c-form c-form--horizontal" enctype="multipart/form-data" method="post">
             <div class="c-form__header">
                 <div class="c-form__actions">
-                    <button class="btn btn-default" data-action="">save</button>
                 </div>
             </div>'
            . $this->getTextFieldHtml() .
@@ -264,7 +263,6 @@ class StandardFormTest extends ILIAS_UI_TestBase
 <form class="c-form c-form--horizontal" enctype="multipart/form-data" method="post">
     <div class="c-form__header">
         <div class="c-form__actions">
-            <button class="btn btn-default" data-action="">save</button>
         </div>
     </div>
     <div class="c-form__error-msg alert alert-danger"><span class="sr-only">ui_error:</span>testing error
@@ -339,7 +337,7 @@ class StandardFormTest extends ILIAS_UI_TestBase
         $expected = $this->brutallyTrimHTML('
             <form class="c-form c-form--horizontal" enctype="multipart/form-data" method="post">
                 <div class="c-form__header">
-                    <div class="c-form__actions"><button class="btn btn-default" data-action="">save</button></div>
+                    <div class="c-form__actions"></div>
                 </div>
                 <div class="c-form__error-msg alert alert-danger"><span class="sr-only">ui_error:</span>This is a fail on form.</div>
                 ' . $field_html . '
@@ -375,7 +373,7 @@ class StandardFormTest extends ILIAS_UI_TestBase
         $expected = $this->brutallyTrimHTML('
 <form class="c-form c-form--horizontal" enctype="multipart/form-data" action="MY_URL" method="post">
     <div class="c-form__header">
-        <div class="c-form__actions"><button class="btn btn-default" data-action="">save</button></div>
+        <div class="c-form__actions"></div>
         <div class="c-form__required">
             <span class="asterisk">*</span><span class="small"> required_field</span>
         </div>
@@ -388,6 +386,33 @@ class StandardFormTest extends ILIAS_UI_TestBase
       <div class="c-form__actions"><button class="btn btn-default" data-action="">save</button></div>
    </div>
 </form>
+        ');
+        $this->assertHTMLEquals($expected, $html);
+    }
+
+    public function testRenderWithForcedTopButton()
+    {
+        $f = $this->buildFactory();
+        $if = $this->getFieldFactory();
+
+        $url = "MY_URL";
+        $form = $f->standard($url, [
+            $if->text("label", "byline"),
+        ])->withForcedTopButton(true);
+
+        $r = $this->getDefaultRenderer();
+        $html = $this->getDefaultRenderer()->render($form);
+
+        $expected = $this->brutallyTrimHTML('
+        <form class="c-form c-form--horizontal" enctype="multipart/form-data" action="MY_URL" method="post">
+           <div class="c-form__header">
+              <div class="c-form__actions"><button class="btn btn-default" data-action="">save</button></div>
+           </div>'
+            . $this->getTextFieldHtml() .
+            '<div class="c-form__footer">
+              <div class="c-form__actions"><button class="btn btn-default" data-action="">save</button></div>
+           </div>
+        </form>
         ');
         $this->assertHTMLEquals($expected, $html);
     }
